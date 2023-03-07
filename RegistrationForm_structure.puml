@@ -1,0 +1,168 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "RegistrationForm",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1281629883 { 
+   	label=Password
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Password1281629883[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Password</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ PasswordGenerator(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2645995 { 
+   	label=User
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   User2645995[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)User</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   accountName: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   email: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   fullName: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   password: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_748377795 { 
+   	label=RegistrationForm
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   RegistrationForm748377795[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)RegistrationForm</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   AccountNameLabel: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   AccountNameTextField: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   EmailLabel: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   EmailTextF: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   FullNameLabel: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   FullNameTextField: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Jpanel: JPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Passwordlabel: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   generatePasswordButton: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   passwordField1: JPasswordField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   passwordGenerator: Password [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   registrateButton: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   seePasswordButton: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   user: User [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(arg: String[])</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+RegistrationForm748377795 -> Password1281629883[label="passwordGenerator
+[0..1]"];
+RegistrationForm748377795 -> User2645995[label="user
+[0..1]"];
+    
+}
+@enduml
